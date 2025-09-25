@@ -1,0 +1,1 @@
+console.log("Hola mundo, estoy en JS, me siento con miedo")
