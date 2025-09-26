@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Menú de Ejercicios</title>
+    <style>
+        /* 1. Fondo del Cuerpo (Body) */
+        body {
+            text-align: center;
+            font-family: 'Poppins', sans-serif; /* Fuente moderna y legible */
+            background: linear-gradient(135deg, #a8c0ff, #3f2b96); /* Degradado de fondo */
+            margin: 0;
+            padding: 60px 0; /* Más espacio arriba y abajo */
+            color: #f0f0f0; /* Texto claro para el fondo oscuro */
+        }
+
+        /* 2. Contenedor Principal (Caja del Menú) */
+        .menu-container {
+            width: 340px; /* Un poco más ancho */
+            margin: 60px auto; /* Más espacio */
+            padding: 35px;
+            border-radius: 18px; /* Bordes más redondeados */
+            background-color: #2a2a4e; /* Fondo oscuro para el menú */
+            /* Sombra más dramática */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); 
+        }
+
+        /* Título */
+        h1 {
+            color: #e0e0ff; /* Tono de blanco/lila suave */
+            margin-bottom: 30px;
+            font-size: 2em; /* Título un poco más grande */
+            font-weight: 700;
+        }
+
+        /* 3. Estilo de los Botones */
+        .menu-button {
+            display: block;
+            width: 100%;
+            padding: 14px; /* Un poco más de padding */
+            margin-bottom: 15px; /* Más espacio entre botones */
+            color: white;
+            border: none;
+            border-radius: 10px; /* Bordes suaves */
+            cursor: pointer;
+            font-size: 17px; /* Texto un poco más grande */
+            font-weight: 600;
+            transition: all 0.3s ease; /* Transiciones suaves */
+            
+            /* Degradado de fondo vibrante */
+            background: linear-gradient(135deg, #6a11cb, #2575fc); 
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25); /* Sombra más pronunciada */
+        }
+
+        /* Efecto al pasar el ratón (Hover) */
+        .menu-button:hover {
+            background: linear-gradient(135deg, #530eaa, #1a5ac9); /* Degradado más oscuro al pasar */
+            transform: translateY(-3px) scale(1.02); /* Eleva y agranda un poco el botón */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35); /* Sombra aún más pronunciada */
+        }
+
+        /* 4. Estilo del Área de Resultado */
+        #resultado {
+            margin-top: 35px; /* Más espacio */
+            padding: 20px;
+            border: 1px solid #4a4a8f; /* Borde sutil */
+            border-radius: 10px;
+            background-color: #3b3b6b; /* Fondo más oscuro para el resultado */
+            color: #e0e0ff; /* Texto claro */
+            font-weight: 500;
+            font-size: 1.15em; /* Texto un poco más grande */
+            line-height: 1.5;
+            min-height: 40px; /* Asegura un tamaño mínimo */
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra interna */
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <script src="1.par_o_impar_2021691.js" defer></script>
+    <script src="2.vocal_o_consonante_2021691.js" defer></script> 
+    <script src="3.imprimir_uno_al_cien_2021691.js" defer></script>
+    <script src="4.suma_del_1_al_50_2021691.js" defer></script>
+    <script src="5.retornar_cadena_mas_larga_2021691.js" defer></script>
+    <script src="6.numero_es_primo_2021691.js" defer></script>
+</head>
+<body>
+    <div class="menu-container">
+        <h1>Menú de Ejercicios</h1>
+        
+        <button class="menu-button" onclick="ejecutarParImpar()">
+            Ejercicio 1: Par o Impar
+        </button>
+        
+        <button class="menu-button" onclick="ejecutarVocalOConsonante()">Ver si es vocal o consonante</button>
+        <button class="menu-button" onclick="imprimirDelUnoAlCien()">Imprimir los numeros del 1 al 100</button>
+        <button class="menu-button" onclick="ejecutarSumaDelUnoAlCincuenta()">La suma de todos los números del 1 al 50</button>
+        <button class="menu-button" onclick="ejecutarCadenaMasLarga()">Retornar la cadena mas larga</button>
+        <button class="menu-button" onclick="ejecutarNumeroPrimo()">Ejercicio 6: Verificar Número Primo</button>
+    </div>
+    
+    <p id="resultado">Presiona un ejercicio para comenzar.</p>
+
+</body>
+</html>
