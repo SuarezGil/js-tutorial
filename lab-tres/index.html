@@ -2,103 +2,140 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú de Ejercicios</title>
     <style>
-        /* 1. Fondo del Cuerpo (Body) */
+        /* Estilos base del menú */
         body {
             text-align: center;
-            font-family: 'Poppins', sans-serif; /* Fuente moderna y legible */
-            background: linear-gradient(135deg, #a8c0ff, #3f2b96); /* Degradado de fondo */
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #a8c0ff, #3f2b96);
             margin: 0;
-            padding: 60px 0; /* Más espacio arriba y abajo */
-            color: #f0f0f0; /* Texto claro para el fondo oscuro */
+            padding: 20px 0;
+            color: #f0f0f0;
+            min-height: 100vh;
         }
-
-        /* 2. Contenedor Principal (Caja del Menú) */
         .menu-container {
-            width: 340px; /* Un poco más ancho */
-            margin: 60px auto; /* Más espacio */
+            width: 90%;
+            max-width: 600px;
+            margin: 30px auto;
             padding: 35px;
-            border-radius: 18px; /* Bordes más redondeados */
-            background-color: #2a2a4e; /* Fondo oscuro para el menú */
-            /* Sombra más dramática */
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); 
+            border-radius: 18px;
+            background-color: #2a2a4e;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
         }
-
-        /* Título */
         h1 {
-            color: #e0e0ff; /* Tono de blanco/lila suave */
+            color: #e0e0ff;
             margin-bottom: 30px;
-            font-size: 2em; /* Título un poco más grande */
+            font-size: 2em;
             font-weight: 700;
         }
-
-        /* 3. Estilo de los Botones */
         .menu-button {
             display: block;
             width: 100%;
-            padding: 14px; /* Un poco más de padding */
-            margin-bottom: 15px; /* Más espacio entre botones */
+            padding: 14px;
+            margin-bottom: 15px;
             color: white;
             border: none;
-            border-radius: 10px; /* Bordes suaves */
-            cursor: pointer;
-            font-size: 17px; /* Texto un poco más grande */
-            font-weight: 600;
-            transition: all 0.3s ease; /* Transiciones suaves */
-            
-            /* Degradado de fondo vibrante */
-            background: linear-gradient(135deg, #6a11cb, #2575fc); 
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25); /* Sombra más pronunciada */
-        }
-
-        /* Efecto al pasar el ratón (Hover) */
-        .menu-button:hover {
-            background: linear-gradient(135deg, #530eaa, #1a5ac9); /* Degradado más oscuro al pasar */
-            transform: translateY(-3px) scale(1.02); /* Eleva y agranda un poco el botón */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35); /* Sombra aún más pronunciada */
-        }
-
-        /* 4. Estilo del Área de Resultado */
-        #resultado {
-            margin-top: 35px; /* Más espacio */
-            padding: 20px;
-            border: 1px solid #4a4a8f; /* Borde sutil */
             border-radius: 10px;
-            background-color: #3b3b6b; /* Fondo más oscuro para el resultado */
-            color: #e0e0ff; /* Texto claro */
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+        }
+        .menu-button:hover {
+            background: linear-gradient(135deg, #530eaa, #1a5ac9);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+        }
+        
+        /* Estilos del área de resultado y Ahorcado */
+        #resultado {
+            margin-top: 35px;
+            padding: 20px;
+            border: 1px solid #4a4a8f;
+            border-radius: 10px;
+            background-color: #3b3b6b;
+            color: #e0e0ff;
             font-weight: 500;
-            font-size: 1.15em; /* Texto un poco más grande */
+            font-size: 1.15em;
             line-height: 1.5;
-            min-height: 40px; /* Asegura un tamaño mínimo */
-            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra interna */
+            min-height: 40px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilos para los botones de las letras */
+        .letter-buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px; /* Espacio entre botones */
+            margin-top: 25px;
+        }
+        .letter-button {
+            background-color: #4a4a8f;
+            color: white;
+            border: 2px solid #5a5a9e;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            width: 40px; /* Tamaño fijo para que se vean uniformes */
+            height: 40px;
+            line-height: 1;
+            text-align: center;
+            transition: background-color 0.1s, transform 0.1s;
+        }
+        .letter-button:hover:not(:disabled) {
+            background-color: #6a6aab;
+            transform: scale(1.05);
+        }
+        .letter-button:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+            box-shadow: none;
+        }
+
+        /* Estilos para letras adivinadas (verde) y fallidas (rojo) */
+        .letter-button.correct-guess {
+            background-color: #64ffda; /* Verde claro */
+            color: #2a2a4e;
+        }
+        .letter-button.wrong-guess {
+            background-color: #ff6e6e; /* Rojo claro */
+            color: white;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     
-    <script src="1.par_o_impar_2021691.js" defer></script>
-    <script src="2.vocal_o_consonante_2021691.js" defer></script> 
-    <script src="3.imprimir_uno_al_cien_2021691.js" defer></script>
-    <script src="4.suma_del_1_al_50_2021691.js" defer></script>
-    <script src="5.retornar_cadena_mas_larga_2021691.js" defer></script>
-    <script src="6.numero_es_primo_2021691.js" defer></script>
 </head>
 <body>
     <div class="menu-container">
         <h1>Menú de Ejercicios</h1>
         
-        <button class="menu-button" onclick="ejecutarParImpar()">
-            Ejercicio 1: Par o Impar
-        </button>
-        
+        <button class="menu-button" onclick="ejecutarParImpar()">Ejercicio 1: Par o Impar</button>
         <button class="menu-button" onclick="ejecutarVocalOConsonante()">Ver si es vocal o consonante</button>
         <button class="menu-button" onclick="imprimirDelUnoAlCien()">Imprimir los numeros del 1 al 100</button>
         <button class="menu-button" onclick="ejecutarSumaDelUnoAlCincuenta()">La suma de todos los números del 1 al 50</button>
         <button class="menu-button" onclick="ejecutarCadenaMasLarga()">Retornar la cadena mas larga</button>
         <button class="menu-button" onclick="ejecutarNumeroPrimo()">Ejercicio 6: Verificar Número Primo</button>
+        
+        <!-- Botón para iniciar el Ahorcado -->
+        <button class="menu-button" onclick="ejecutarAhorcado()">🎮 Juego del Ahorcado</button>
     </div>
     
-    <p id="resultado">Presiona un ejercicio para comenzar.</p>
+    <div id="resultado">Presiona un ejercicio para comenzar.</div>
 
+    <!-- Scripts movidos al final del body para garantizar que las funciones estén cargadas antes de usarse -->
+    <script src="1.par_o_impar_2021691.js"></script>
+    <script src="2.vocal_o_consonante_2021691.js"></script> 
+    <script src="3.imprimir_uno_al_cien_2021691.js"></script>
+    <script src="4.suma_del_1_al_50_2021691.js"></script>
+    <script src="5.retornar_cadena_mas_larga_2021691.js"></script>
+    <script src="6.numero_es_primo_2021691.js"></script>
+    <script src="ahorcado_2021691.js"></script>
 </body>
 </html>
